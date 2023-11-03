@@ -16,21 +16,20 @@ endif()
 # Find installed Open3D, which exports Open3D::Open3D
 find_package(Open3D REQUIRED)
 
-add_executable(Draw)
-target_sources(Draw PRIVATE Draw.cpp)
-target_link_libraries(Draw PRIVATE Open3D::Open3D)
+add_executable(Process_pc)
+target_sources(Process_pc PRIVATE Process_pc.cpp)
+target_link_libraries(Process_pc PRIVATE Open3D::Open3D)
 
 find_package(Armadillo REQUIRED)
 include_directories(${ARMADILLO_INCLUDE_DIRS})
-target_link_libraries(Draw PRIVATE ${ARMADILLO_LIBRARIES})
-
+target_link_libraries(Process_pc PRIVATE ${ARMADILLO_LIBRARIES})
 
 # On Windows if BUILD_SHARED_LIBS is enabled, copy .dll files to the executable directory
 if(WIN32)
     get_target_property(open3d_type Open3D::Open3D TYPE)
     if(open3d_type STREQUAL "SHARED_LIBRARY")
         message(STATUS "Copying Open3D.dll to ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>")
-        add_custom_command(TARGET Draw POST_BUILD
+        add_custom_command(TARGET Process_pc POST_BUILD
                            COMMAND ${CMAKE_COMMAND} -E copy
                                    ${CMAKE_INSTALL_PREFIX}/bin/Open3D.dll
                                    ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>)
