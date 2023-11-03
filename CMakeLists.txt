@@ -20,6 +20,11 @@ add_executable(Draw)
 target_sources(Draw PRIVATE Draw.cpp)
 target_link_libraries(Draw PRIVATE Open3D::Open3D)
 
+find_package(Armadillo REQUIRED)
+include_directories(${ARMADILLO_INCLUDE_DIRS})
+target_link_libraries(Draw PRIVATE ${ARMADILLO_LIBRARIES})
+
+
 # On Windows if BUILD_SHARED_LIBS is enabled, copy .dll files to the executable directory
 if(WIN32)
     get_target_property(open3d_type Open3D::Open3D TYPE)
