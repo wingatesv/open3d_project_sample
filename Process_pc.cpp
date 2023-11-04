@@ -215,7 +215,7 @@ void splitPC(std::string ply_dir, std::string label_dir) {
 
                         fs::remove(ori_label_path);
                     } catch (const std::exception &e) {
-                        std::cerr << "Error processing label: " << e.what() << std::endl;
+                        std::cerr << "Error processing label for file: " << file_name << " - " << e.what() << std::endl;
                     }
 
                     for (size_t i = 0; i < inlier_cloud_nps.size(); ++i) {
