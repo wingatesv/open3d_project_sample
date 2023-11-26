@@ -1,13 +1,4 @@
-# Find Pre-Installed Open3D Package in CMake
-
-This is one of the two CMake examples showing how to use Open3D in your CMake
-project:
-
-* [Find Pre-Installed Open3D Package in CMake](https://github.com/intel-isl/open3d-cmake-find-package)
-* [Use Open3D as a CMake External Project](https://github.com/intel-isl/open3d-cmake-external-project)
-
-For more details, check out the [Open3D repo](https://github.com/intel-isl/Open3D) and
-[Open3D docs](http://www.open3d.org/docs/release/cpp_project.html).
+# Point Cloud Preprocessing in C++
 
 ## Step 1: Compile and install Open3D
 
@@ -42,7 +33,7 @@ cd ..\..
 
 Note: `-DBUILD_SHARED_LIBS=ON` is recommended if `-DBUILD_CUDA_MODULE=ON`.
 
-## Step 2: Use Open3D in this example project
+## Step 2: Use Open3D in this project
 
 On Ubuntu/macOS:
 
@@ -53,7 +44,7 @@ mkdir build
 cd build
 cmake -DOpen3D_ROOT=${HOME}/open3d_install ..
 make -j 12
-./Draw
+./Process_pc --input-dir [INPUT-DIR] --output-dir [OUTPUT-DIR] --label-dir [LABEL-DIR] --output-label-dir [OUTPUT-LABEL-DIR]
 ```
 
 On Windows:
@@ -64,5 +55,5 @@ cd open3d-cmake-find-package
 mkdir build
 cmake -DOpen3D_ROOT=C:\open3d_install ..
 cmake --build . --config Release --parallel 12
-Release\Draw
+Release\Process_pc --input-dir [INPUT-DIR] --output-dir [OUTPUT-DIR] --label-dir [LABEL-DIR] --output-label-dir [OUTPUT-LABEL-DIR]
 ```
